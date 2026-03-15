@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaughanAI — AI Assistant for UK Estate Agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f3d;
+  --navy-mid: #1a3260;
+  --cream: #f8f3ea;
+  --cream-dark: #ede5d4;
+  --brass: #b8882e;
+  --brass-light: #d4a94a;
+  --white: #ffffff;
+  --red: #c0392b;
+  --text: #0f1f3d;
+  --text-mid: #4a5a7a;
+  --text-light: #8a9ab8;
+  --green: #2d7a4f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--navy);
+  padding: 0 60px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 2px solid var(--brass);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.nav-logo-text {
+  display: inline;
+  white-space: nowrap;
+}
+
+.nav-logo-text span { color: var(--brass-light); }
+
+.for-sale-pill {
+  background: var(--red);
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.btn-nav {
+  background: var(--brass);
+  color: var(--white);
+  padding: 11px 28px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  transition: background 0.2s;
+}
+.btn-nav:hover { background: var(--brass-light); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-sub { max-width: 580px; text-align: center; }
+
+.hero-cta-wrap { justify-content: center; }
+
+.hero-grid-bg { display: none; }
+
+.hero-glow {
+  position: absolute;
+  top: -10%; right: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184,136,46,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-text { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brass-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  border: 1px solid rgba(184,136,46,0.35);
+  padding: 6px 14px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--brass-light);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.3; }
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  line-height: 1.12;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.hero h1 em { font-style: italic; color: var(--brass-light); }
+
+.hero-sub {
+  color: #8a9ab8;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 44px;
+  max-width: 500px;
+}
+
+.hero-sub strong { color: var(--cream); font-weight: 500; }
+
+.hero-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--brass);
+  color: var(--white);
+  padding: 13px 28px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  background: var(--brass-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184,136,46,0.3);
+}
+
+.hero-sub-link {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-sub-link:hover { color: var(--white); }
+
+/* ── FOR SALE SIGN ── */
+.sign-wrap { display: none; }
+
+.sign-scene { animation: float 5s ease-in-out infinite; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(-0.8deg); }
+  50% { transform: translateY(-12px) rotate(0.4deg); }
+}
+
+.sign-board {
+  width: 290px;
+  background: var(--white);
+  border: 5px solid var(--navy-mid);
+  box-shadow: 10px 10px 0 var(--brass), 20px 20px 50px rgba(0,0,0,0.5);
+  position: relative;
+}
+
+.sign-hooks {
+  position: absolute;
+  top: -20px; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.hook {
+  width: 10px; height: 20px;
+  background: #bbb;
+  border-radius: 0 0 4px 4px;
+}
+
+.sign-string {
+  position: absolute;
+  top: -55px; left: 50%;
+  transform: translateX(-50%);
+  width: 2px; height: 55px;
+  background: repeating-linear-gradient(to bottom, #999 0, #999 3px, transparent 3px, transparent 7px);
+}
+
+.sign-red {
+  background: var(--red);
+  padding: 13px 20px;
+  text-align: center;
+}
+.sign-red-text {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.sign-body {
+  padding: 22px 20px 18px;
+  text-align: center;
+  border-bottom: 3px solid var(--cream-dark);
+}
+
+.sign-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--navy);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.sign-name span { color: var(--brass); }
+
+.sign-rule {
+  width: 36px; height: 2px;
+  background: var(--brass);
+  margin: 10px auto;
+}
+
+.sign-sub {
+  font-size: 0.65rem;
+  color: var(--text-mid);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.sign-foot {
+  background: var(--navy);
+  padding: 11px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sign-foot-l { color: var(--brass-light); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+.sign-online {
+  color: #4caf50;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 4px;
+}
+.sign-online::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.sign-post-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sign-pole {
+  width: 10px; height: 120px;
+  background: linear-gradient(to right, #777, #ccc, #999, #ccc, #777);
+}
+.sign-base {
+  width: 70px; height: 12px;
+  background: linear-gradient(to bottom, #666, #999);
+  border-radius: 2px;
+}
+
+.sign-shadow {
+  position: absolute;
+  bottom: -18px; left: 50%;
+  transform: translateX(-50%);
+  width: 180px; height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
+  animation: shadowPulse 5s ease-in-out infinite;
+}
+@keyframes shadowPulse {
+  0%,100% { transform: translateX(-50%) scaleX(1); opacity: 0.35; }
+  50% { transform: translateX(-50%) scaleX(0.78); opacity: 0.18; }
+}
+
+/* ── STATS ── */
+.stats {
+  background: var(--navy);
+  border-top: 1px solid rgba(184,136,46,0.3);
+  border-bottom: 1px solid rgba(184,136,46,0.3);
+  display: flex;
+  justify-content: center;
+}
+
+.stat {
+  padding: 24px 52px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+.stat + .stat::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 25%; height: 50%;
+  width: 1px;
+  background: rgba(184,136,46,0.25);
+}
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+  color: var(--brass-light);
+}
+.stat-l {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 5px;
+  display: block;
+  color: var(--white);
+}
+
+/* ── WHAT IT DOES ── */
+.what {
+  background: var(--white);
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.what-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--brass-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.what h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.what h2 em { font-style: italic; color: var(--brass); }
+
+.what-body {
+  color: var(--text-mid);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 36px;
+}
+
+.what-body strong { color: var(--text); font-weight: 600; }
+
+.three-things { display: flex; flex-direction: column; gap: 0; }
+
+.thing {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.thing-icon {
+  width: 42px; height: 42px;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.thing-body strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.thing-body span {
+  font-size: 0.84rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* ── CHAT DEMO ── */
+.demo {
+  background: var(--cream);
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.demo-tag {
+  display: inline-block;
+  background: var(--brass);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.demo h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 16px;
+}
+
+.demo-body {
+  color: var(--text-mid);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(45,122,79,0.1);
+  border: 1px solid rgba(45,122,79,0.3);
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 13px;
+  margin-bottom: 28px;
+}
+.live-tag::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.chat-window {
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  box-shadow: 14px 14px 0 var(--navy);
+  overflow: hidden;
+}
+
+.chat-head {
+  background: var(--navy);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-av {
+  width: 36px; height: 36px;
+  background: var(--brass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.chat-head-info h4 { color: white; font-size: 0.87rem; font-weight: 700; }
+.chat-head-info p {
+  color: #4caf50;
+  font-size: 0.67rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.chat-head-info p::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: #4caf50;
+  border-radius: 50%;
+}
+
+.chat-body {
+  padding: 22px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.chat-ts {
+  text-align: center;
+  font-size: 0.67rem;
+  color: var(--text-light);
+}
+
+.msg { max-width: 84%; font-size: 0.85rem; line-height: 1.55; }
+
+.msg-bot {
+  background: var(--cream);
+  padding: 11px 15px;
+  border-radius: 2px 12px 12px 12px;
+  color: var(--text);
+  align-self: flex-start;
+  border-left: 3px solid var(--brass);
+  opacity: 0;
+  animation: up 0.4s ease forwards;
+}
+
+.msg-user {
+  background: var(--navy);
+  color: white;
+  padding: 11px 15px;
+  border-radius: 12px 2px 12px 12px;
+  align-self: flex-end;
+  opacity: 0;
+  animation: up 0.4s ease forwards;
+}
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg:nth-child(2) { animation-delay: 0.5s; }
+.msg:nth-child(3) { animation-delay: 1.8s; }
+.msg:nth-child(4) { animation-delay: 3.1s; }
+.msg:nth-child(5) { animation-delay: 4.4s; }
+.msg:nth-child(6) { animation-delay: 5.7s; }
+
+/* ── PERSONALITY SECTION ── */
+.personality {
+  background: var(--navy);
+  padding: 100px 60px;
+}
+
+.pers-tag {
+  display: inline-block;
+  border: 1px solid rgba(184,136,46,0.4);
+  color: var(--brass-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.personality h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.personality h2 em { font-style: italic; color: var(--brass-light); }
+
+.pers-sub {
+  color: #8a9ab8;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 580px;
+  margin-bottom: 56px;
+}
+
+.pers-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Flip card wrapper */
+.pers-card {
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.pers-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pers-card.flipped .pers-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared face styles */
+.pers-front,
+.pers-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 32px 24px 28px;
+  border: 2px solid rgba(184,136,46,0.18);
+  background: var(--navy-mid);
+  display: flex;
+  flex-direction: column;
+}
+
+.pers-front::before,
+.pers-back::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transition: transform 0.25s;
+}
+
+.pers-card:hover .pers-front::before,
+.pers-card.flipped .pers-back::before { transform: scaleX(1); }
+
+.pers-front {
+  border-color: rgba(184,136,46,0.18);
+}
+
+.pers-card:hover .pers-front {
+  border-color: var(--brass);
+}
+
+/* Back face — rotated */
+.pers-back {
+  transform: rotateY(180deg);
+  background: #1e3a70;
+  border-color: var(--brass);
+  justify-content: space-between;
+}
+
+.pers-svg {
+  width: 52px; height: 52px;
+  background: rgba(184,136,46,0.1);
+  border: 1px solid rgba(184,136,46,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.pers-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pers-desc {
+  color: #7a8ba8;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  font-weight: 300;
+  flex: 1;
+}
+
+.pers-hint {
+  margin-top: 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pers-hint::after {
+  content: '→';
+  font-size: 0.8rem;
+}
+
+/* Back face content */
+.pers-back-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  margin-bottom: 8px;
+}
+
+.pers-back-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pers-back-bubble {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--brass);
+  padding: 12px 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.pers-back-flip {
+  margin-top: 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #7a8ba8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pers-back-flip::before { content: '←'; font-size: 0.8rem; }
+
+.preview-svg-wrap {
+  width: 56px; height: 56px;
+  background: rgba(184,136,46,0.1);
+  border: 1px solid rgba(184,136,46,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pers-emoji { display: none; }
+
+.pers-preview {
+  border: 1px solid rgba(184,136,46,0.25);
+  padding: 28px 36px;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.preview-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.preview-label {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  margin-bottom: 10px;
+}
+
+.preview-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.55;
+}
+
+.bespoke-note {
+  margin-top: 48px;
+  border-top: 1px solid rgba(184,136,46,0.2);
+  padding-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.bespoke-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bespoke-dot {
+  width: 6px; height: 6px;
+  background: var(--brass);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.bespoke-item p {
+  font-size: 0.85rem;
+  color: #8a9ab8;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.bespoke-item p strong {
+  display: block;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 3px;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--white);
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.marc-card {
+  background: var(--cream);
+  border: 2px solid var(--brass);
+  box-shadow: 8px 8px 0 var(--brass);
+  overflow: hidden;
+}
+
+.marc-photo {
+  height: 240px;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.marc-photo::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(184,136,46,0.04) 0, rgba(184,136,46,0.04) 1px, transparent 1px, transparent 14px);
+}
+
+.marc-mono {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--brass);
+  opacity: 0.25;
+  position: relative;
+  z-index: 1;
+}
+
+.marc-info {
+  padding: 22px 26px;
+  border-top: 3px solid var(--brass);
+  background: var(--white);
+}
+
+.marc-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--navy);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.marc-title {
+  color: var(--brass);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.marc-facts { display: flex; flex-direction: column; gap: 7px; }
+.marc-fact {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.marc-fact::before {
+  content: '✓';
+  color: var(--brass);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.about-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--brass-light);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.about h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.about h2 em { font-style: italic; color: var(--brass); }
+
+.about-body {
+  color: var(--text-mid);
+  font-size: 0.98rem;
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.about-body strong { color: var(--text); font-weight: 600; }
+
+.about-quote {
+  border-left: 3px solid var(--brass);
+  padding-left: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+/* ── PRICING ── */
+.pricing {
+  background: var(--cream);
+  padding: 100px 60px;
+  text-align: center;
+}
+
+.price-tag {
+  display: inline-block;
+  background: var(--brass);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+
+.pricing h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pricing-sub {
+  color: var(--text-mid);
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 52px;
+}
+
+.price-card {
+  max-width: 440px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--navy);
+  box-shadow: 12px 12px 0 var(--navy);
+  overflow: hidden;
+}
+
+.price-top {
+  background: var(--navy);
+  padding: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.price-top::before,
+.price-top::after {
+  content: '';
+  position: absolute;
+  border: 2px solid rgba(184,136,46,0.15);
+  border-radius: 50%;
+}
+.price-top::before { width: 180px; height: 180px; top: -50px; right: -50px; }
+.price-top::after { width: 110px; height: 110px; top: -25px; right: -25px; }
+
+.price-lbl {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.price-num {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+.price-num sup { font-size: 2.2rem; vertical-align: super; }
+
+.price-period {
+  color: #8a9ab8;
+  font-size: 0.82rem;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.price-roi-line {
+  display: inline-block;
+  background: rgba(184,136,46,0.15);
+  border: 1px solid rgba(184,136,46,0.3);
+  color: var(--brass-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.price-body { padding: 36px 44px; }
+
+.price-list { list-style: none; margin-bottom: 30px; text-align: left; }
+.price-list li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--cream-dark);
+  font-size: 0.87rem;
+  color: var(--text-mid);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+.price-list li::before {
+  content: '✓';
+  color: var(--brass);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.price-note {
+  font-size: 0.77rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 12px;
+}
+
+/* WhatsApp — hero inline */
+.btn-whatsapp-hero {
+  padding: 13px 28px;
+  background: #4a7c6f;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+}
+.btn-whatsapp-hero:hover { background: #3d6860; transform: translateY(-2px); }
+
+/* WhatsApp — on white/cream background */
+.btn-whatsapp {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  padding: 13px 28px;
+  background: #4a7c6f;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.btn-whatsapp:hover { background: #3d6860; }
+
+/* WhatsApp — on navy background */
+.btn-whatsapp-dark {
+  display: inline-block;
+  padding: 13px 28px;
+  background: #4a7c6f;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.22s;
+  position: relative;
+  z-index: 1;
+}
+.btn-whatsapp-dark:hover { background: #3d6860; transform: translateY(-2px); }
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.wa-quiet {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.wa-quiet a {
+  color: var(--text-mid);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.wa-quiet a:hover { color: var(--navy); }
+
+.no-contract-block {
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: var(--cream);
+  border-left: 3px solid var(--brass);
+  text-align: left;
+}
+
+.no-contract-line {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+
+.no-contract-sub {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+
+/* ── FINAL CTA ── */
+.cta {
+  background: var(--navy);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(184,136,46,0.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.cta h2 em { font-style: italic; color: var(--brass-light); }
+
+.cta p {
+  color: #8a9ab8;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 460px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--navy);
+  padding: 13px 36px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-block;
+  transition: all 0.22s;
+  position: relative;
+  z-index: 1;
+}
+.btn-white:hover {
+  background: var(--brass-light);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.cta-small {
+  color: #4a5a78;
+  font-size: 0.78rem;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #07101f;
+  border-top: 2px solid var(--brass);
+  padding: 26px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.foot-logo {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.foot-logo span { color: var(--brass-light); }
+footer p { color: #3a4a68; font-size: 0.76rem; }
+footer a { color: #5a6a88; text-decoration: none; }
+footer a:hover { color: var(--brass-light); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  /* Nav */
+  nav { padding: 0 20px; height: 58px; }
+  .nav-logo { font-size: 1.3rem; }
+
+  /* Hero */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 56px 20px 60px;
+    gap: 0;
+    min-height: auto;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .hero-sub { font-size: 1rem; margin-bottom: 32px; max-width: 100%; }
+  .hero-cta-wrap { flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-cta-wrap .btn-primary,
+  .hero-cta-wrap .btn-whatsapp-hero { width: 100%; text-align: center; }
+  .sign-wrap { display: none; }
+
+  /* Stats */
+  .stats { flex-wrap: wrap; }
+  .stat { width: 50%; padding: 16px 12px; }
+  .stat-n { font-size: 1.9rem; }
+  .stat-l { font-size: 0.62rem; }
+  .stat + .stat::before { display: none; }
+
+  /* What */
+  .what {
+    grid-template-columns: 1fr;
+    padding: 60px 20px;
+    gap: 40px;
+  }
+  .what h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .what-body { font-size: 0.94rem; }
+  .thing-icon { width: 38px; height: 38px; flex-shrink: 0; }
+
+  /* Demo */
+  .demo {
+    grid-template-columns: 1fr;
+    padding: 60px 20px;
+    gap: 40px;
+  }
+  .demo h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .chat-window { box-shadow: 6px 6px 0 var(--navy); }
+
+  /* Personality */
+  .personality { padding: 60px 20px; }
+  .personality h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .pers-sub { font-size: 0.93rem; margin-bottom: 36px; }
+  .pers-cards { grid-template-columns: 1fr; gap: 14px; }
+  .pers-card { height: 280px; }
+  .pers-preview {
+    flex-direction: column;
+    gap: 14px;
+    padding: 22px 20px;
+  }
+  .preview-msg { font-size: 1.1rem; }
+  .bespoke-note {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 28px;
+    margin-top: 32px;
+  }
+
+  /* About */
+  .about {
+    grid-template-columns: 1fr;
+    padding: 60px 20px;
+    gap: 36px;
+  }
+  .about h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .marc-card { max-width: 280px; }
+  .about-body { font-size: 0.93rem; }
+
+  /* Pricing */
+  .pricing { padding: 60px 20px; }
+  .pricing h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .price-card { box-shadow: 6px 6px 0 var(--navy); }
+  .price-top { padding: 32px 28px; }
+  .price-num { font-size: 4.5rem; }
+  .price-body { padding: 28px 28px; }
+
+  /* CTA */
+  .cta { padding: 60px 20px; }
+  .cta h2 { font-size: clamp(1.9rem, 7vw, 2.8rem); }
+  .cta p { font-size: 0.93rem; }
+  .btn-white { padding: 16px 32px; width: 100%; text-align: center; display: block; }
+
+  /* Footer */
+  footer {
+    padding: 22px 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 2rem; }
+  .stat { font-size: 0.6rem; }
+  .for-sale-pill { display: none; }
+  .nav-logo { font-size: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-text">Vaughan<span>AI</span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-text">
+    <div class="hero-eyebrow">Built exclusively for UK Estate Agents</div>
+    <h1>Your 24/7<br><em>virtual team member.</em><br>Bespoke to your agency.</h1>
+    <p class="hero-sub">
+      VaughanAI sits on your website and talks to vendors, landlords and buyers — <strong>in your name, your colours, your tone.</strong> No noise. Just the leads you actually want, qualified and ready to call.
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="/cdn-cgi/l/email-protection#e78a869584a7808b8683829382848fc98488c9928c" class="btn-primary">Book a Free Demo →</a>
+      <a href="https://wa.me/447404259301?text=Hi%20Marc%2C%20I%27d%20love%20to%20find%20out%20more%20about%20VaughanAI%20for%20my%20agency." class="btn-whatsapp-hero" target="_blank">Message us on WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="sign-wrap">
+    <div style="position:relative">
+      <div class="sign-shadow"></div>
+      <div class="sign-scene">
+        <div class="sign-post-col">
+          <div style="position:relative">
+            <div class="sign-string"></div>
+            <div class="sign-hooks">
+              <div class="hook"></div>
+              <div class="hook"></div>
+            </div>
+            <div class="sign-board">
+              <div class="sign-red"><div class="sign-red-text">For Sale</div></div>
+              <div class="sign-body">
+                <div class="sign-name">VaughanAI</div>
+                <div class="sign-rule"></div>
+                <div class="sign-sub">Your Name · Your Brand</div>
+              </div>
+              <div class="sign-foot">
+                <span class="sign-foot-l">Bespoke AI Assistant</span>
+                <span class="sign-online">Online 24/7</span>
+              </div>
+            </div>
+          </div>
+          <div class="sign-pole"></div>
+          <div class="sign-base"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">81%</span><span class="stat-l">of forms abandoned</span></div>
+  <div class="stat"><span class="stat-n">40%</span><span class="stat-l">more leads converted</span></div>
+  <div class="stat"><span class="stat-n">3×</span><span class="stat-l">more qualified leads</span></div>
+  <div class="stat"><span class="stat-n">24/7</span><span class="stat-l">never misses an enquiry</span></div>
+</div>
+
+<!-- WHAT IT DOES -->
+<section class="what">
+  <div>
+    <div class="what-tag">What It Does</div>
+    <h2>Not a chatbot.<br><em>Your</em> team member.</h2>
+    <p class="what-body">Most AI assistants are generic widgets bolted onto a website. VaughanAI is <strong>built around your agency</strong> — your name, your colours, your tone of voice. It feels like a natural, welcoming extension of your team from the very first message.</p>
+    <p class="what-body">You choose exactly which leads you want. Vendors only? Landlords? Both? Your assistant focuses on that and nothing else. <strong>No noise. No distractions. Just the right conversations.</strong></p>
+  </div>
+  <div class="three-things">
+    <div class="thing">
+      <div class="thing-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      </div>
+      <div class="thing-body">
+        <strong>Your name, your colours</strong>
+        <span>Built to complement your brand. A seamless, professional presence that feels native to your website.</span>
+      </div>
+    </div>
+    <div class="thing">
+      <div class="thing-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="thing-body">
+        <strong>Only the leads you want</strong>
+        <span>You tell Marc what matters — vendors, landlords, buyers. Everything else is filtered out.</span>
+      </div>
+    </div>
+    <div class="thing">
+      <div class="thing-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="thing-body">
+        <strong>Warm leads in your inbox</strong>
+        <span>Name, number, budget, timeline — all qualified before you pick up the phone.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAT DEMO -->
+<section class="demo">
+  <div>
+    <div class="demo-tag">Live Example</div>
+    <h2>This happened at<br>11:14pm last night</h2>
+    <p class="demo-body">A serious vendor landed on an estate agent's website after hours. No one was in the office. VaughanAI had the conversation, qualified the lead, and delivered a name and number ready to call first thing.</p>
+    <div class="live-tag">Live on Avenue Estates · Bournemouth</div>
+    <br>
+    <a href="/cdn-cgi/l/email-protection#e08d819283a0878c81848594858388ce838fce958b" class="btn-primary">Get This On Your Website →</a>
+    <a href="https://wa.me/447404259301?text=Hi%20Marc%2C%20I%27d%20love%20to%20find%20out%20more%20about%20VaughanAI%20for%20my%20agency." class="btn-whatsapp-hero" target="_blank" style="margin-top:10px;display:inline-block;">Message us on WhatsApp</a>
+  </div>
+
+  <div class="chat-window">
+    <div class="chat-head">
+      <div class="chat-av">S</div>
+      <div class="chat-head-info">
+        <h4>Sophie — Avenue Estates</h4>
+        <p>Online now · replies instantly</p>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="chat-ts">Tonight · 11:14 PM</div>
+      <div class="msg msg-bot">Hi, I'm Sophie at Avenue Estates. Thinking of selling or letting?</div>
+      <div class="msg msg-user">Selling — 3 bed semi in Bournemouth</div>
+      <div class="msg msg-bot">Ready to book a valuation or still exploring?</div>
+      <div class="msg msg-user">Ready to go, want it listed before spring</div>
+      <div class="msg msg-bot">Perfect. Can I take your name, number and email? The team will call you tomorrow.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONALITY -->
+<section class="personality" id="personality">
+  <div class="pers-tag">Choose a Personality</div>
+  <h2>Your assistant.<br>Your <em>character.</em></h2>
+  <p class="pers-sub">Pick the personality that fits your agency. Your assistant will always sound like it belongs to your team — not like a generic AI. Click a card to hear it.</p>
+
+  <div class="pers-cards">
+
+    <div class="pers-card" onclick="flipCard(this)">
+      <div class="pers-card-inner">
+        <div class="pers-front">
+          <div class="pers-svg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <div class="pers-name">Professional</div>
+          <div class="pers-desc">Measured and precise. Builds confidence with vendors and landlords from the first message.</div>
+          <div class="pers-hint">See a sample</div>
+        </div>
+        <div class="pers-back">
+          <div>
+            <div class="pers-back-label">Sample opening</div>
+            <div class="pers-back-name">Meet James</div>
+            <div class="pers-back-bubble">"Good evening. I'm James, the virtual assistant at Northfield & Co. Are you looking to arrange a valuation, or exploring your options as a landlord?"</div>
+          </div>
+          <div class="pers-back-flip">Flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pers-card" onclick="flipCard(this)">
+      <div class="pers-card-inner">
+        <div class="pers-front">
+          <div class="pers-svg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="pers-name">Warm & Friendly</div>
+          <div class="pers-desc">Approachable and genuine. Makes people feel at ease and happy to share their details.</div>
+          <div class="pers-hint">See a sample</div>
+        </div>
+        <div class="pers-back">
+          <div>
+            <div class="pers-back-label">Sample opening</div>
+            <div class="pers-back-name">Meet Priya</div>
+            <div class="pers-back-bubble">"Hello! I'm Priya from Castleton Homes — lovely to hear from you. Are you thinking of selling or letting? I'd love to help."</div>
+          </div>
+          <div class="pers-back-flip">Flip back</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pers-card" onclick="flipCard(this)">
+      <div class="pers-card-inner">
+        <div class="pers-front">
+          <div class="pers-svg">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="pers-name">To the Point</div>
+          <div class="pers-desc">No small talk. Qualifies fast, captures the lead, and gets out of the way.</div>
+          <div class="pers-hint">See a sample</div>
+        </div>
+        <div class="pers-back">
+          <div>
+            <div class="pers-back-label">Sample opening</div>
+            <div class="pers-back-name">Meet Marcus</div>
+            <div class="pers-back-bubble">"Hi, I'm Marcus at Beacon Property. Selling or letting? I'll get the right person to call you."</div>
+          </div>
+          <div class="pers-back-flip">Flip back</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bespoke-note">
+    <div class="bespoke-item">
+      <div class="bespoke-dot"></div>
+      <p><strong>Your name, your choice</strong>Call it Sophie, Priya, Marcus, James, Aisha, Kai — whatever fits your agency. It's yours.</p>
+    </div>
+    <div class="bespoke-item">
+      <div class="bespoke-dot"></div>
+      <p><strong>Colours to match your site</strong>Your assistant will complement your brand — not clash with it.</p>
+    </div>
+    <div class="bespoke-item">
+      <div class="bespoke-dot"></div>
+      <p><strong>Evolves with you</strong>Want to change tone, focus or name down the line? Just ask Marc.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="marc-card">
+    <div class="marc-photo">
+      <div class="marc-mono">MR</div>
+    </div>
+    <div class="marc-info">
+      <div class="marc-name">Marc Richards</div>
+      <div class="marc-title">Founder · Glade Tech</div>
+      <div class="marc-facts">
+        <div class="marc-fact">9 years at JPMorgan Chase</div>
+        <div class="marc-fact">Software Engineer III</div>
+        <div class="marc-fact">Based in Poole, Dorset</div>
+        <div class="marc-fact">Every bot personally built by Marc</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="about-tag">Not a Faceless AI Company</div>
+    <h2>Built by a real person.<br><em>You'll always have someone to call.</em></h2>
+    <p class="about-body">I'm Marc Richards. I spent 9 years building production systems at JPMorgan Chase before leaving to build tools that actually help real businesses. I built VaughanAI because <strong>estate agents deserve better than a contact form and a 48-hour callback.</strong><br><br>Every assistant is personally configured by me. You talk to me on the call, I build it, I install it. No support tickets. No call centres.</p>
+    <div class="about-quote">"The best leads always came from conversations — not forms."</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="price-tag">Simple Pricing</div>
+  <h2>One price. No surprises.</h2>
+  <p class="pricing-sub">No setup fee. No contract. No lock-in. Just £100 a month and a bespoke AI assistant working for your agency around the clock.</p>
+
+  <div class="price-card">
+    <div class="price-top">
+      <div class="price-lbl">Monthly · No Contract · Cancel Any Time</div>
+      <div class="price-num"><sup>£</sup>100</div>
+      <div class="price-period">per month · no setup fee · no lock-in</div>
+    </div>
+    <div class="price-body">
+      <ul class="price-list">
+        <li>Bespoke setup — your name, colours and personality</li>
+        <li>Only captures the leads you want — no noise</li>
+        <li>Qualified leads delivered to your inbox instantly</li>
+        <li>24/7 — nights, weekends, bank holidays</li>
+        <li>One line of code — Marc handles everything else</li>
+        <li>Direct line to Marc — always</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#0a676b78694a6d666b6e6f7e6f6962246965247f61" class="btn-primary" style="width:100%;text-align:center;display:block;">Book Your Free Demo →</a>
+      <a href="https://wa.me/447404259301?text=Hi%20Marc%2C%20I%27d%20love%20to%20find%20out%20more%20about%20VaughanAI%20for%20my%20agency." class="btn-whatsapp" target="_blank">Message us on WhatsApp</a>
+      <div class="no-contract-block">
+        <div class="no-contract-line">No contract. No lock-in. Cancel any day.</div>
+        <div class="no-contract-sub">If it doesn't deliver leads, you walk away. Simple.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Your agency.<br><em>Online. Always.</em></h2>
+  <p>Book a free 20-minute call with Marc. See VaughanAI live on a real UK estate agent's website — no pitch, just the product.</p>
+  <div class="cta-buttons">
+    <a href="/cdn-cgi/l/email-protection#4a272b38290a2d262b2e2f3e2f2922642925643f21" class="btn-white">Book Your Free Demo →</a>
+    <a href="https://wa.me/447404259301?text=Hi%20Marc%2C%20I%27d%20love%20to%20find%20out%20more%20about%20VaughanAI%20for%20my%20agency." class="btn-whatsapp-dark" target="_blank">Message us on WhatsApp</a>
+  </div>
+  <p class="cta-small">No contract · No lock-in · Live within 24 hours</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Vaughan<span>AI</span></div>
+  <p>A <a href="#">Glade Tech</a> product · Built by Marc Richards · Poole, Dorset</p>
+  <p>© 2026 VaughanAI · <a href="#">Privacy</a></p>
+</footer>
+
+<script src="https://monty-widget.vercel.app/embed.js?clientId=vaughanai" async></script>
+
+<script>
+function flipCard(card) {
+  card.classList.toggle('flipped');
+}
+</script>
+</body>
+</html>
