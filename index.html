@@ -125,6 +125,31 @@ nav {
 
 .hero-text { position: relative; z-index: 2; }
 
+.hero-logo-lockup {
+  margin-bottom: 40px;
+}
+
+.hero-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--white);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.hero-logo-name span {
+  color: var(--brass-light);
+}
+
+.hero-logo-tag {
+  color: #8a9ab8;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1235,6 +1260,53 @@ nav {
   font-weight: 300;
 }
 
+/* ── BOOKING ── */
+.booking {
+  background: var(--cream);
+  padding: 90px 60px;
+  text-align: center;
+}
+
+.booking-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass);
+  border: 1px solid var(--brass);
+  border-radius: 20px;
+  padding: 5px 16px;
+  margin-bottom: 20px;
+}
+
+.booking-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.booking-sub {
+  font-size: 1rem;
+  color: var(--text-mid);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+}
+
+.booking-cal-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--cream-dark);
+  background: var(--white);
+}
+
 /* ── FINAL CTA ── */
 .cta {
   background: var(--navy);
@@ -1326,7 +1398,58 @@ footer p { color: #3a4a68; font-size: 0.76rem; }
 footer a { color: #5a6a88; text-decoration: none; }
 footer a:hover { color: var(--brass-light); }
 
-/* ── RESPONSIVE ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.25s;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 66px;
+  left: 0; right: 0;
+  background: var(--navy);
+  border-bottom: 2px solid var(--brass);
+  z-index: 998;
+  padding: 8px 0;
+}
+
+.mobile-menu.open { display: block; }
+
+.mobile-menu a {
+  display: block;
+  padding: 16px 24px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(184,136,46,0.15);
+  transition: background 0.2s;
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { background: rgba(184,136,46,0.1); color: var(--brass-light); }
+
+@media (max-width: 960px) {
+  .hamburger { display: flex; }
+}
 @media (max-width: 960px) {
   /* Nav */
   nav { padding: 0 20px; height: 58px; }
@@ -1409,6 +1532,10 @@ footer a:hover { color: var(--brass-light); }
   .price-num { font-size: 4.5rem; }
   .price-body { padding: 28px 28px; }
 
+  /* Booking */
+  .booking { padding: 60px 20px; }
+  .booking-cal-wrap { min-height: 500px; }
+
   /* CTA */
   .cta { padding: 60px 20px; }
   .cta h2 { font-size: clamp(1.9rem, 7vw, 2.8rem); }
@@ -1440,7 +1567,19 @@ footer a:hover { color: var(--brass-light); }
   <div class="nav-logo">
     <span class="nav-logo-text">Vaughan<span>AI</span></span>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="toggleMenu()">How It Works</a>
+  <a href="#personality" onclick="toggleMenu()">Personalities</a>
+  <a href="#demo" onclick="toggleMenu()">Live Demo</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="https://wa.me/447404259301" onclick="toggleMenu()" target="_blank">Message us on WhatsApp</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1448,6 +1587,10 @@ footer a:hover { color: var(--brass-light); }
   <div class="hero-glow"></div>
 
   <div class="hero-text">
+    <div class="hero-logo-lockup">
+      <div class="hero-logo-name">Vaughan<span>AI</span></div>
+      <div class="hero-logo-tag">Your bespoke virtual assistant</div>
+    </div>
     <div class="hero-eyebrow">Built exclusively for UK Estate Agents</div>
     <h1>Your 24/7<br><em>virtual team member.</em><br>Bespoke to your agency.</h1>
     <p class="hero-sub">
@@ -1478,7 +1621,7 @@ footer a:hover { color: var(--brass-light); }
                 <div class="sign-sub">Your Name · Your Brand</div>
               </div>
               <div class="sign-foot">
-                <span class="sign-foot-l">Bespoke AI Assistant</span>
+                <span class="sign-foot-l">AI Assistant</span>
                 <span class="sign-online">Online 24/7</span>
               </div>
             </div>
@@ -1493,16 +1636,16 @@ footer a:hover { color: var(--brass-light); }
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><span class="stat-n">81%</span><span class="stat-l">of forms abandoned</span></div>
-  <div class="stat"><span class="stat-n">40%</span><span class="stat-l">more leads converted</span></div>
-  <div class="stat"><span class="stat-n">3×</span><span class="stat-l">more qualified leads</span></div>
+  <div class="stat"><span class="stat-n">81%</span><span class="stat-l">of contact forms abandoned</span></div>
   <div class="stat"><span class="stat-n">24/7</span><span class="stat-l">never misses an enquiry</span></div>
+  <div class="stat"><span class="stat-n">48hrs</span><span class="stat-l">live on your website</span></div>
+  <div class="stat"><span class="stat-n">Yours</span><span class="stat-l">your name · your brand · your tone</span></div>
 </div>
 
 <!-- WHAT IT DOES -->
-<section class="what">
+<section class="what" id="how">
   <div>
-    <div class="what-tag">What It Does</div>
+    <div class="what-tag">Why VaughanAI</div>
     <h2>Not a chatbot.<br><em>Your</em> team member.</h2>
     <p class="what-body">Most AI assistants are generic widgets bolted onto a website. VaughanAI is <strong>built around your agency</strong> — your name, your colours, your tone of voice. It feels like a natural, welcoming extension of your team from the very first message.</p>
     <p class="what-body">You choose exactly which leads you want. Vendors only? Landlords? Both? Your assistant focuses on that and nothing else. <strong>No noise. No distractions. Just the right conversations.</strong></p>
@@ -1539,7 +1682,7 @@ footer a:hover { color: var(--brass-light); }
 </section>
 
 <!-- CHAT DEMO -->
-<section class="demo">
+<section class="demo" id="demo">
   <div>
     <div class="demo-tag">Live Example</div>
     <h2>This happened at<br>11:14pm last night</h2>
@@ -1679,15 +1822,15 @@ footer a:hover { color: var(--brass-light); }
     <div class="about-tag">Not a Faceless AI Company</div>
     <h2>Built by a real person.<br><em>You'll always have someone to call.</em></h2>
     <p class="about-body">I'm Marc Richards. I spent 9 years building production systems at JPMorgan Chase before leaving to build tools that actually help real businesses. I built VaughanAI because <strong>estate agents deserve better than a contact form and a 48-hour callback.</strong><br><br>Every assistant is personally configured by me. You talk to me on the call, I build it, I install it. No support tickets. No call centres.</p>
-    <div class="about-quote">"The best leads always came from conversations — not forms."</div>
+    <div class="about-quote">Every serious lead starts with a conversation — not a form left unanswered.</div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="pricing">
+<section class="pricing" id="pricing">
   <div class="price-tag">Simple Pricing</div>
   <h2>One price. No surprises.</h2>
-  <p class="pricing-sub">No setup fee. No contract. No lock-in. Just £100 a month and a bespoke AI assistant working for your agency around the clock.</p>
+  <p class="pricing-sub">No setup fee. No contract. No lock-in. Just £100 a month and your own AI assistant working for your agency around the clock.</p>
 
   <div class="price-card">
     <div class="price-top">
@@ -1697,11 +1840,11 @@ footer a:hover { color: var(--brass-light); }
     </div>
     <div class="price-body">
       <ul class="price-list">
-        <li>Bespoke setup — your name, colours and personality</li>
+        <li>Built around your agency — your name, colours and personality</li>
         <li>Only captures the leads you want — no noise</li>
         <li>Qualified leads delivered to your inbox instantly</li>
         <li>24/7 — nights, weekends, bank holidays</li>
-        <li>One line of code — Marc handles everything else</li>
+        <li>Marc handles the entire setup — you don't touch a thing</li>
         <li>Direct line to Marc — always</li>
       </ul>
       <a href="/cdn-cgi/l/email-protection#0a676b78694a6d666b6e6f7e6f6962246965247f61" class="btn-primary" style="width:100%;text-align:center;display:block;">Book Your Free Demo →</a>
@@ -1714,10 +1857,32 @@ footer a:hover { color: var(--brass-light); }
   </div>
 </section>
 
+<!-- BOOKING -->
+<section class="booking">
+  <p class="booking-tag">Book a Demo</p>
+  <h2 class="booking-heading">See it live. Book 15 minutes.</h2>
+  <p class="booking-sub">Pick a time that suits you — we'll show you VaughanAI live on a real estate agent's website.</p>
+  <div class="booking-cal-wrap">
+    <!-- Cal inline embed code begins -->
+    <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-15min"></div>
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "15min", {origin:"https://app.cal.com"});
+      Cal.ns["15min"]("inline", {
+        elementOrSelector:"#my-cal-inline-15min",
+        config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"},
+        calLink: "vaughanai/15min",
+      });
+      Cal.ns["15min"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#b8882e"}},"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal inline embed code ends -->
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta">
   <h2>Your agency.<br><em>Online. Always.</em></h2>
-  <p>Book a free 20-minute call with Marc. See VaughanAI live on a real UK estate agent's website — no pitch, just the product.</p>
+  <p>Book a free 20-minute call with Marc. See VaughanAI live on a real UK estate agent's website.</p>
   <div class="cta-buttons">
     <a href="/cdn-cgi/l/email-protection#4a272b38290a2d262b2e2f3e2f2922642925643f21" class="btn-white">Book Your Free Demo →</a>
     <a href="https://wa.me/447404259301?text=Hi%20Marc%2C%20I%27d%20love%20to%20find%20out%20more%20about%20VaughanAI%20for%20my%20agency." class="btn-whatsapp-dark" target="_blank">Message us on WhatsApp</a>
@@ -1735,6 +1900,13 @@ footer a:hover { color: var(--brass-light); }
 <script src="https://monty-widget.vercel.app/embed.js?clientId=vaughanai" async></script>
 
 <script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+
 function flipCard(card) {
   card.classList.toggle('flipped');
 }
