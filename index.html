@@ -64,6 +64,37 @@ nav {
 
 .nav-logo-text span { color: var(--brass-light); }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-client-login {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--brass-light);
+  border: 1px solid rgba(184,136,46,0.5);
+  border-radius: 6px;
+  padding: 7px 16px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-client-login:hover {
+  background: rgba(184,136,46,0.12);
+  border-color: var(--brass-light);
+  color: var(--white);
+}
+
+.mobile-login {
+  color: var(--brass-light) !important;
+  font-weight: 600 !important;
+}
+
 .for-sale-pill {
   background: var(--red);
   color: white;
@@ -1449,6 +1480,7 @@ footer a:hover { color: var(--brass-light); }
 
 @media (max-width: 960px) {
   .hamburger { display: flex; }
+  .btn-client-login { font-size: 0.75rem; padding: 6px 12px; }
 }
 @media (max-width: 960px) {
   /* Nav */
@@ -1567,9 +1599,12 @@ footer a:hover { color: var(--brass-light); }
   <div class="nav-logo">
     <span class="nav-logo-text">Vaughan<span>AI</span></span>
   </div>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <a href="https://app.vaughanai.co" class="btn-client-login" target="_blank">Client Login</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
@@ -1579,6 +1614,7 @@ footer a:hover { color: var(--brass-light); }
   <a href="#demo" onclick="toggleMenu()">Live Demo</a>
   <a href="#pricing" onclick="toggleMenu()">Pricing</a>
   <a href="https://wa.me/447404259301" onclick="toggleMenu()" target="_blank">Message us on WhatsApp</a>
+  <a href="https://app.vaughanai.co" target="_blank" class="mobile-login">Client Login →</a>
 </div>
 
 <!-- HERO -->
