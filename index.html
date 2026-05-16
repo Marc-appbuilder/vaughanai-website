@@ -1641,7 +1641,6 @@ footer a:hover { color: var(--brass-light); }
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#how" onclick="toggleMenu()">How It Works</a>
-  <a href="#personality" onclick="toggleMenu()">Personalities</a>
   <a href="#demo" onclick="toggleMenu()">Live Demo</a>
   <a href="#pricing" onclick="toggleMenu()">Pricing</a>
   <a href="https://wa.me/447404259301" onclick="toggleMenu()" target="_blank">Message us on WhatsApp</a>
@@ -1853,90 +1852,40 @@ footer a:hover { color: var(--brass-light); }
 </section>
 
 <!-- PERSONALITY -->
-<section class="personality" id="personality">
-  <div class="pers-tag">Choose a Personality</div>
-  <h2>Your agency.<br>Your <em>voice.</em></h2>
-  <p class="pers-sub">Pick the personality that fits your agency. VaughanAI will always sound like it belongs to your team — not like a generic AI. Click a card to hear it.</p>
-
-  <div class="pers-cards">
-
-    <div class="pers-card" onclick="flipCard(this)">
-      <div class="pers-card-inner">
-        <div class="pers-front">
-          <div class="pers-svg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-          </div>
-          <div class="pers-name">Professional</div>
-          <div class="pers-desc">Measured and precise. Builds confidence with vendors and landlords from the first message.</div>
-          <div class="pers-hint">See a sample</div>
+<!-- FEATURES -->
+<section style="background:var(--cream);padding:90px 60px;" id="personality">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">Built for Estate Agents</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:48px;">Your agency. Your branding. Your voice.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;">
+      <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
+        <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8882e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.63 17z"/></svg>
         </div>
-        <div class="pers-back">
-          <div>
-            <div class="pers-back-label">Sample opening</div>
-            <div class="pers-back-name">Meet James</div>
-            <div class="pers-back-bubble">"Good evening. I'm James, the virtual assistant at Northfield & Co. Are you looking to arrange a valuation, or exploring your options as a landlord?"</div>
-          </div>
-          <div class="pers-back-flip">Flip back</div>
-        </div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.97rem;margin-bottom:8px;">Capture and qualify leads automatically</div>
+        <div style="color:var(--text-mid);font-size:0.88rem;line-height:1.65;">Seller, landlord and applicant enquiries handled instantly — 24/7, in your name.</div>
       </div>
-    </div>
-
-    <div class="pers-card" onclick="flipCard(this)">
-      <div class="pers-card-inner">
-        <div class="pers-front">
-          <div class="pers-svg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <div class="pers-name">Warm & Friendly</div>
-          <div class="pers-desc">Approachable and genuine. Makes people feel at ease and happy to share their details.</div>
-          <div class="pers-hint">See a sample</div>
+      <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
+        <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8882e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <div class="pers-back">
-          <div>
-            <div class="pers-back-label">Sample opening</div>
-            <div class="pers-back-name">Meet Priya</div>
-            <div class="pers-back-bubble">"Hello! I'm Priya from Castleton Homes — lovely to hear from you. Are you thinking of selling or letting? I'd love to help."</div>
-          </div>
-          <div class="pers-back-flip">Flip back</div>
-        </div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.97rem;margin-bottom:8px;">Everything in one inbox</div>
+        <div style="color:var(--text-mid);font-size:0.88rem;line-height:1.65;">Calls, WhatsApp, email, summaries and conversations — all in one place, ready to act on.</div>
       </div>
-    </div>
-
-    <div class="pers-card" onclick="flipCard(this)">
-      <div class="pers-card-inner">
-        <div class="pers-front">
-          <div class="pers-svg">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <div class="pers-name">To the Point</div>
-          <div class="pers-desc">No small talk. Qualifies fast, captures the lead, and gets out of the way.</div>
-          <div class="pers-hint">See a sample</div>
+      <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
+        <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8882e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
-        <div class="pers-back">
-          <div>
-            <div class="pers-back-label">Sample opening</div>
-            <div class="pers-back-name">Meet Marcus</div>
-            <div class="pers-back-bubble">"Hi, I'm Marcus at Beacon Property. Selling or letting? I'll get the right person to call you."</div>
-          </div>
-          <div class="pers-back-flip">Flip back</div>
-        </div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.97rem;margin-bottom:8px;">Turn enquiries into instructions</div>
+        <div style="color:var(--text-mid);font-size:0.88rem;line-height:1.65;">Capture, qualify and progress leads without missing opportunities.</div>
       </div>
-    </div>
-
-  </div>
-
-  <div class="bespoke-note">
-    <div class="bespoke-item">
-      <div class="bespoke-dot"></div>
-      <p><strong>Your name, your choice</strong>Call it Sophie, Priya, Marcus, James, Aisha, Kai — whatever fits your agency. It's yours.</p>
-    </div>
-    <div class="bespoke-item">
-      <div class="bespoke-dot"></div>
-      <p><strong>Colours to match your site</strong>Your assistant will complement your brand — not clash with it.</p>
-    </div>
-    <div class="bespoke-item">
-      <div class="bespoke-dot"></div>
-      <p><strong>Evolves with you</strong>Want to change tone, focus or name down the line? Just ask Marc.</p>
+      <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
+        <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8882e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <div style="font-weight:700;color:var(--navy);font-size:0.97rem;margin-bottom:8px;">Built around your agency</div>
+        <div style="color:var(--text-mid);font-size:0.88rem;line-height:1.65;">Your branding, colours and tone of voice — so it feels like a natural part of your team.</div>
+      </div>
     </div>
   </div>
 </section>
