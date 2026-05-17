@@ -1614,6 +1614,47 @@ footer a:hover { color: var(--brass-light); }
   }
 }
 
+/* ── MOBILE FIXES — inline sections ── */
+@media (max-width: 960px) {
+  /* Workflow section */
+  .workflow-section { padding: 60px 20px !important; }
+  .workflow-steps {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .workflow-step { padding: 8px 16px !important; }
+  .workflow-arrow { transform: rotate(90deg); }
+
+  /* Speed to lead + features sections */
+  .speed-section,
+  .features-section { padding: 60px 20px !important; }
+  .speed-section > div,
+  .features-section > div { max-width: 100% !important; }
+  .speed-cards,
+  .features-cards {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .speed-card,
+  .features-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Workflow image */
+  .workflow-img {
+    width: 100% !important;
+    box-shadow: 6px 6px 0 var(--navy) !important;
+  }
+
+  /* Competitor callout */
+  .callout-section { padding: 50px 20px !important; }
+
+  /* Case study */
+  .case-study-section { padding: 50px 20px !important; }
+}
+
 /* Extra small screens */
 @media (max-width: 380px) {
   .hero h1 { font-size: 2rem; }
@@ -1780,12 +1821,12 @@ footer a:hover { color: var(--brass-light); }
 </section>
 
 <!-- WORKFLOW -->
-<section style="background:var(--cream-dark);padding:90px 60px;">
+<section class="workflow-section" style="background:var(--cream-dark);padding:90px 60px;">
   <div style="max-width:900px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">How It Works</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:16px;">From visitor to booked call.<br><em>In minutes, not days.</em></h2>
     <p style="color:var(--text-mid);font-size:0.97rem;line-height:1.7;max-width:580px;margin:0 auto 48px;">This is your moat. While your competitors rely on contact forms and callbacks, VaughanAI captures, qualifies and delivers every enquiry instantly.</p>
-    <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin-bottom:48px;">
+    <div class="workflow-steps" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;margin-bottom:48px;">
       <div style="text-align:center;padding:16px 20px;">
         <div style="width:48px;height:48px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4a94a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div style="font-size:0.8rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;">Visitor lands</div>
@@ -1816,16 +1857,16 @@ footer a:hover { color: var(--brass-light); }
         <div style="font-size:0.8rem;font-weight:700;color:var(--brass);text-transform:uppercase;letter-spacing:0.08em;">One-tap call</div>
       </div>
     </div>
-    <img src="yes.png" alt="VaughanAI lead dashboard" style="width:100%;border-radius:12px;box-shadow:14px 14px 0 var(--navy);display:block;">
+    <img src="yes.png" alt="VaughanAI lead dashboard" class="workflow-img" style="width:100%;border-radius:12px;box-shadow:14px 14px 0 var(--navy);display:block;">
   </div>
 </section>
 
 <!-- SPEED TO LEAD -->
-<section style="background:var(--cream);padding:90px 60px;">
+<section class="speed-section" style="background:var(--cream);padding:90px 60px;">
   <div style="max-width:860px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">Speed to Lead</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:48px;">Most tools stop at the conversation.<br><em>We don't.</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;text-align:left;">
+    <div class="speed-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;text-align:left;">
       <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:32px 28px;">
         <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
           <!-- Lightning bolt — instant -->
@@ -1854,13 +1895,12 @@ footer a:hover { color: var(--brass-light); }
   </div>
 </section>
 
-<!-- PERSONALITY -->
 <!-- FEATURES -->
-<section style="background:var(--cream);padding:90px 60px;" id="personality">
+<section class="features-section" style="background:var(--cream);padding:90px 60px;" id="personality">
   <div style="max-width:900px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">Built for Estate Agents</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:48px;">Your agency. Your branding. Your voice.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;">
+    <div class="features-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;">
       <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
         <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
           <!-- Funnel — qualify leads -->
