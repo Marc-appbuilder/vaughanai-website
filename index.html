@@ -1653,6 +1653,17 @@ footer a:hover { color: var(--brass-light); }
   .case-study-section { padding: 50px 20px !important; }
 }
 
+/* ── FADE-IN ANIMATIONS ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Extra small screens */
 @media (max-width: 380px) {
   .hero h1 { font-size: 2rem; }
@@ -1760,7 +1771,7 @@ footer a:hover { color: var(--brass-light); }
 <section class="what" id="how">
   <div>
     <div class="what-tag">Why VaughanAI</div>
-    <h2>Built for your agency.<br><em>Not a generic widget.</em></h2>
+    <h2 class="fade-up">Built for your agency.<br><em>Not a generic widget.</em></h2>
     <p class="what-body">Most lead response systems are generic tools bolted onto a website. VaughanAI is <strong>built around your agency</strong> — your name, your colours, your tone of voice. It feels like a natural, welcoming extension of your team from the very first message.</p>
     <p class="what-body">You choose exactly which leads you want. Vendors only? Landlords? Both? Your assistant focuses on that and nothing else. <strong>No noise. No distractions. Just the right conversations.</strong></p>
   </div>
@@ -1807,7 +1818,7 @@ footer a:hover { color: var(--brass-light); }
 <section class="demo" id="demo">
   <div>
     <div class="demo-tag">Live Example</div>
-    <h2>This happened at<br>11:14pm last night</h2>
+    <h2 class="fade-up">This happened at<br>11:14pm last night</h2>
     <p class="demo-body">A serious vendor landed on an estate agent's website after hours. No one was in the office. VaughanAI had the conversation, qualified the lead, and delivered a name and number ready to call first thing.</p>
     <div class="live-tag">Live on Avenue Estates · Bournemouth</div>
     <br>
@@ -1864,7 +1875,7 @@ footer a:hover { color: var(--brass-light); }
   <div style="max-width:860px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">Speed to Lead</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:48px;">Most tools stop at the conversation.<br><em>We don't.</em></h2>
-    <div class="speed-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;text-align:left;">
+    <div class="speed-cards fade-up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;text-align:left;">
       <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:32px 28px;">
         <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
           <!-- Lightning bolt — instant -->
@@ -1898,7 +1909,7 @@ footer a:hover { color: var(--brass-light); }
   <div style="max-width:900px;margin:0 auto;text-align:center;">
     <div style="display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:20px;padding:5px 16px;margin-bottom:24px;">Built for Estate Agents</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:48px;">Your agency. Your branding. Your voice.</h2>
-    <div class="features-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;">
+    <div class="features-cards fade-up" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;text-align:left;">
       <div style="background:var(--white);border:1px solid var(--cream-dark);border-radius:10px;padding:28px 24px;">
         <div style="width:40px;height:40px;background:rgba(184,136,46,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
           <!-- Funnel — qualify leads -->
@@ -1947,7 +1958,7 @@ footer a:hover { color: var(--brass-light); }
     </div>
   </div>
   <div>
-    <h2>Enterprise thinking.<br><em>Personal service.</em></h2>
+    <h2 class="fade-up">Enterprise thinking.<br><em>Personal service.</em></h2>
     <p class="about-body">Built in Dorset. Supporting UK estate agents. VaughanAI is the product of <a href="https://gladetech.uk" target="_blank" style="color:var(--brass);text-decoration:none;font-weight:600;">Glade Tech</a> — a software company based in Poole, built by people who understand what local agencies actually need. With a background building production systems at JPMorgan Chase, we bring enterprise-grade reliability to the market without the enterprise price tag.</p>
     <div class="about-quote">Every serious lead starts with a conversation — not a form.</div>
   </div>
@@ -1956,7 +1967,7 @@ footer a:hover { color: var(--brass-light); }
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="price-tag">Simple Pricing</div>
-  <h2>One price. No surprises.</h2>
+  <h2 class="fade-up">One price. No surprises.</h2>
   <p class="pricing-sub">One-off setup, then £197 a month. No contract. No lock-in. 24/7 lead response working for your agency around the clock.</p>
 
   <div class="price-card">
@@ -1995,7 +2006,7 @@ footer a:hover { color: var(--brass-light); }
 <!-- BOOKING -->
 <section class="booking" id="booking">
   <p class="booking-tag">Book a Demo</p>
-  <h2 class="booking-heading">See it live. Book 15 minutes.</h2>
+  <h2 class="booking-heading fade-up">See it live. Book 15 minutes.</h2>
   <p class="booking-sub">Pick a time that suits you — we'll show you VaughanAI live on a real estate agent's website.</p>
   <div class="booking-cal-wrap">
     <!-- Cal inline embed code begins -->
@@ -2040,6 +2051,23 @@ function toggleMenu() {
 function flipCard(card) {
   card.classList.toggle('flipped');
 }
+</script>
+
+<script>
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
