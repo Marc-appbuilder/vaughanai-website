@@ -52,18 +52,28 @@ nav {
   letter-spacing: -0.02em;
   text-decoration: none;
 }
-.nav-logo span { color: var(--white); }
+.logo-v {
+  color: #9FFF0A;
+  font-size: 1.13em;
+  font-weight: 700;
+  display: inline-block;
+}
 .nav-cta {
-  background: var(--accent);
-  color: var(--black);
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.28);
   padding: 9px 20px;
   font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
   border-radius: 6px;
-  transition: opacity 0.15s;
+  transition: all 0.2s;
 }
-.nav-cta:hover { opacity: 0.85; }
+.nav-cta:hover {
+  border-color: #9FFF0A;
+  color: #9FFF0A;
+  background: rgba(159,255,10,0.06);
+}
 
 /* ── HERO ── */
 .hero {
@@ -510,16 +520,16 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">Vaughan</a>
+  <a href="/" class="nav-logo"><span class="logo-v">V</span>aughan</a>
   <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="nav-cta" target="_blank">Get Started →</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">24/7 Lead Response · Estate Agents</div>
+    <div class="hero-tag">Built For Estate Agents</div>
     <h1>Every lead you miss is a commission <em>someone else is banking.</em></h1>
-    <p class="hero-sub">Vaughan responds to every enquiry. Instantly. 24/7. While you're with a client, at dinner, or asleep.</p>
+    <p class="hero-sub">Vaughan captures, qualifies and delivers every enquiry instantly — day or night.</p>
     <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="btn-main" target="_blank">Get Started — £197/month →</a>
     <p class="hero-note">No demo call needed. No long contract. Cancel anytime.</p>
   </div>
@@ -536,12 +546,20 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   </div>
 </section>
 
+<!-- TRANSITION -->
+<section style="background:#0a0a0a;padding:80px 40px;border-top:1px solid rgba(255,255,255,0.06);">
+  <div style="max-width:800px;margin:0 auto;">
+    <p style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15;color:var(--white);margin-bottom:20px;">81% of people abandon contact forms.</p>
+    <p style="font-size:1.05rem;color:rgba(255,255,255,0.55);line-height:1.7;max-width:560px;margin-bottom:0;">Your next instruction starts with a conversation. Not a form.<br><span style="color:var(--white);font-weight:600;">Vaughan starts the conversation instantly.</span></p>
+  </div>
+</section>
+
 <!-- SOLUTION -->
 <section class="solution">
   <div class="solution-inner">
     <div class="sec-label-light">The Solution</div>
-    <h2>We do one thing.<br>We do it better than anyone.</h2>
-    <p class="solution-body">Vaughan isn't trying to fix your CRM, your marketing, your whole business. It qualifies your leads the second they land — day or night — and emails them straight to you, ready to close. No fluff. No bloat. Technology that just works.</p>
+    <h2>We do one thing.<br>We start conversations.</h2>
+    <p class="solution-body">Vaughan isn't trying to replace your whole business. The moment someone lands on your site — day or night — it starts a conversation, qualifies them, and delivers the lead straight to your inbox. No forms. No friction. Just conversations that convert.</p>
     <div class="solution-grid">
       <div class="sol-card">
         <div class="sol-card-label">Instant</div>
