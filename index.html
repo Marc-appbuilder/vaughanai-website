@@ -268,7 +268,10 @@ nav {
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
+  cursor: zoom-in;
+  transition: opacity 0.15s;
 }
+.proof-shot img:hover { opacity: 0.85; }
 .proof-shot p {
   font-size: 0.78rem;
   color: var(--muted);
@@ -276,6 +279,25 @@ nav {
 }
 @media (max-width: 640px) {
   .proof-shots { grid-template-columns: 1fr; }
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
 }
 
 .proof-badge {
@@ -605,7 +627,28 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   <p>© 2026 Vaughan · <a href="#">Privacy</a> · <a href="mailto:marc@vaughanai.co">Contact</a></p>
 </footer>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt=""/>
+</div>
+
 <script src="https://monty-widget.vercel.app/embed.js?clientId=vaughanai" async></script>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.proof-shot img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+    });
+  });
+  lightbox.addEventListener('click', function() {
+    lightbox.classList.remove('open');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lightbox.classList.remove('open');
+  });
+</script>
 
 </body>
 </html>
