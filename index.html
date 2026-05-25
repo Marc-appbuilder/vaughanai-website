@@ -257,6 +257,27 @@ nav {
   margin-bottom: 32px;
 }
 
+.proof-shots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+.proof-shot img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: block;
+}
+.proof-shot p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 10px;
+}
+@media (max-width: 640px) {
+  .proof-shots { grid-template-columns: 1fr; }
+}
+
 .proof-badge {
   display: inline-flex;
   align-items: center;
@@ -522,6 +543,16 @@ footer a:hover { color: rgba(255,255,255,0.6); }
     <div class="sec-label">Proof It Works</div>
     <p class="proof-quote">Live on Avenue Estates, Bournemouth. First lead converted within a week. Worth over two years of subscription in one deal.</p>
     <div class="proof-badge">Real agency · Real result · <span>Real commission</span></div>
+    <div class="proof-shots">
+      <div class="proof-shot">
+        <img src="yup1.png" alt="Vaughan live on Avenue Estates website"/>
+        <p>Live on Avenue Estates — chat responding instantly</p>
+      </div>
+      <div class="proof-shot">
+        <img src="yes.png" alt="Vaughan lead dashboard showing qualified lead"/>
+        <p>Lead dashboard — qualified, scored and ready to close</p>
+      </div>
+    </div>
   </div>
 </section>
 
