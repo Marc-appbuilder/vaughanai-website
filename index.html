@@ -46,19 +46,21 @@ nav {
   border-bottom: 1px solid var(--bdark);
 }
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
   font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.01em;
   text-decoration: none;
   line-height: 1;
 }
-.logo-v {
-  color: #9FFF0A;
-  font-size: 1.22em;
-  font-weight: 700;
-  display: inline-block;
-  margin-right: -0.03em;
+.logo-mark {
+  height: 0.72em;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
 }
 .nav-cta {
   background: transparent;
@@ -522,7 +524,11 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo"><span class="logo-v">V</span>aughan</a>
+  <a href="/" class="nav-logo">
+    <svg class="logo-mark" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 2L13 20L24 2" stroke="#9FFF0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>aughan
+  </a>
   <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="nav-cta" target="_blank">Get Started →</a>
 </nav>
 
@@ -642,7 +648,11 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">Vaughan</div>
+  <div class="foot-logo" style="display:inline-flex;align-items:center;gap:0.18em;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;">
+    <svg style="height:0.72em;width:auto;display:block;" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 2L13 20L24 2" stroke="#9FFF0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>aughan
+  </div>
   <p>Built with care in Poole, UK</p>
   <p>© 2026 Vaughan · <a href="#">Privacy</a> · <a href="mailto:marc@vaughanai.co">Contact</a></p>
 </footer>
