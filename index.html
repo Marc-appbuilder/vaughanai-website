@@ -513,6 +513,20 @@ footer p { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
 footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
 footer a:hover { color: rgba(255,255,255,0.6); }
 
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+.reveal-d1 { transition-delay: 0.12s; }
+.reveal-d2 { transition-delay: 0.24s; }
+.reveal-d3 { transition-delay: 0.36s; }
+
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   nav { padding: 0 20px; }
@@ -710,6 +724,30 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') lightbox.classList.remove('open');
   });
+
+  // Scroll reveal
+  (function() {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    // Reveal all sections except hero
+    document.querySelectorAll('section:not(.hero)').forEach(function(el) {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+
+    // Stagger the three solution cards
+    document.querySelectorAll('.sol-card').forEach(function(el, i) {
+      el.classList.add('reveal', 'reveal-d' + (i + 1));
+      io.observe(el);
+    });
+  })();
 </script>
 
 </body>
