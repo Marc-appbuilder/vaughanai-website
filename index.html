@@ -46,14 +46,15 @@ nav {
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--bdark);
 }
+/* A3 applied to live nav */
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.18em;
+  gap: 0;
   font-size: 1.5rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.025em;
   text-decoration: none;
   line-height: 1;
 }
@@ -62,7 +63,58 @@ nav {
   width: auto;
   flex-shrink: 0;
   display: block;
+  margin-right: -0.04em;
 }
+
+/* ── TEMP COMPARISON BAR — remove after pick ── */
+.logo-preview-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 300;
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.logo-preview-bar .lp-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-right: 10px;
+}
+.lp-sep {
+  width: 1px;
+  height: 28px;
+  background: rgba(255,255,255,0.1);
+}
+/* A2 */
+.wm-a2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.wm-a2 svg { height: 0.72em; width: auto; display: block; margin-right: -0.03em; }
+/* A3 */
+.wm-a3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.wm-a3 svg { height: 0.72em; width: auto; display: block; margin-right: -0.04em; }
 .nav-cta {
   background: transparent;
   color: var(--white);
@@ -523,8 +575,21 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 </head>
 <body>
 
+<!-- TEMP COMPARISON BAR -->
+<div class="logo-preview-bar">
+  <span class="lp-label">A2</span>
+  <span class="wm-a2">
+    <svg viewBox="0 0 88 76" fill="none"><line x1="44" y1="70" x2="10" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/><line x1="44" y1="70" x2="78" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/></svg>aughan
+  </span>
+  <div class="lp-sep"></div>
+  <span class="lp-label">A3 — live nav ↓</span>
+  <span class="wm-a3">
+    <svg viewBox="0 0 88 76" fill="none"><line x1="44" y1="70" x2="10" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/><line x1="44" y1="70" x2="78" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/></svg>aughan
+  </span>
+</div>
+
 <!-- NAV -->
-<nav>
+<nav style="top:53px;">
   <a href="/" class="nav-logo">
     <svg class="logo-mark" viewBox="0 0 88 76" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <line x1="44" y1="70" x2="10" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/>
