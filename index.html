@@ -66,6 +66,28 @@ nav {
   margin-right: -0.04em;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-login {
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 9px 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-login:hover {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.25);
+}
+
 .nav-cta {
   background: transparent;
   color: var(--white);
@@ -76,11 +98,59 @@ nav {
   text-decoration: none;
   border-radius: 6px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 .nav-cta:hover {
   border-color: #9FFF0A;
   color: #9FFF0A;
   background: rgba(159,255,10,0.06);
+}
+
+/* Hamburger — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: rgba(255,255,255,0.7);
+  line-height: 0;
+}
+
+/* Mobile menu drawer */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 60px; left: 0; right: 0;
+  background: #0f0f0f;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 20px 20px;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 99;
+}
+.mobile-menu.open { display: flex; }
+.mob-started {
+  display: block;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  background: var(--accent);
+  color: #0a0a0a;
+}
+.mob-login {
+  display: block;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* ── HERO ── */
@@ -530,6 +600,8 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   nav { padding: 0 20px; }
+  .nav-right { display: none; }
+  .nav-hamburger { display: block; }
   .hero { padding: 100px 24px 60px; }
   .problem, .solution, .proof, .pricing, .ftcta { padding: 72px 24px; }
   .solution-grid { grid-template-columns: 1fr; }
@@ -549,8 +621,24 @@ footer a:hover { color: rgba(255,255,255,0.6); }
       <line x1="44" y1="70" x2="78" y2="8" stroke="#AAFF00" stroke-width="14" stroke-linecap="round"/>
     </svg><span style="font-family:'Sora',sans-serif;font-weight:400;">aughan</span>
   </a>
-  <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="nav-cta" target="_blank">Get Started →</a>
+  <div class="nav-right">
+    <a href="https://app.vaughanai.co/login" class="nav-login">Log In</a>
+    <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="nav-cta" target="_blank">Get Started →</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="3" y1="6" x2="19" y2="6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      <line x1="3" y1="11" x2="19" y2="11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+      <line x1="3" y1="16" x2="19" y2="16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+    </svg>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="navigation">
+  <a href="https://buy.stripe.com/cNi6oz2ZD8I12cFdnC7g404" class="mob-started" target="_blank">Get Started →</a>
+  <a href="https://app.vaughanai.co/login" class="mob-login">Log In</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -724,6 +812,23 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') lightbox.classList.remove('open');
   });
+
+  // Hamburger menu toggle
+  (function() {
+    var btn  = document.getElementById('nav-hamburger');
+    var menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', function() {
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
 
   // Scroll reveal — targets individual content elements, not sections
   (function() {
