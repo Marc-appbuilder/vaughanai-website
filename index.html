@@ -608,6 +608,9 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
   .price-card-top, .price-card-body { padding: 28px 24px; }
   .questions { padding: 40px 24px 0; }
+  .clients-grid { grid-template-columns: 1fr !important; }
+  .clients-grid > div:first-child { border-radius: 12px 12px 0 0 !important; }
+  .clients-grid > div:last-child  { border-radius: 0 0 12px 12px !important; }
 }
 </style>
 </head>
@@ -656,7 +659,7 @@ footer a:hover { color: rgba(255,255,255,0.6); }
   <div style="max-width:900px;margin:0 auto;">
     <p data-reveal style="font-size:clamp(1rem,2vw,1.3rem);font-weight:700;letter-spacing:-0.01em;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:56px;">Built exclusively for UK estate agents.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+    <div class="clients-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
 
       <!-- Avenue Estates -->
       <div data-reveal style="background:#0d0d0d;border-radius:12px 0 0 12px;padding:40px 36px;">
@@ -804,7 +807,7 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 <section style="background:var(--black);padding:100px 40px;">
   <div style="max-width:800px;margin:0 auto;">
     <div class="sec-label-light" data-reveal>After The Conversation</div>
-    <h2 data-reveal style="font-size:clamp(2.4rem,6vw,4.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.08;color:var(--white);margin-bottom:16px;">A conversation is only the beginning.</h2>
+    <h2 data-reveal style="font-size:clamp(1.8rem,5vw,4.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:var(--white);margin-bottom:16px;">A conversation is only the beginning.</h2>
     <p data-reveal style="font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.7;max-width:520px;margin-bottom:48px;">Qualified enquiries. Delivered straight to your team.</p>
     <div class="proof-shot" data-reveal>
       <img src="007.png" alt="Vaughan lead dashboard" style="border-color:rgba(255,255,255,0.08);"/>
