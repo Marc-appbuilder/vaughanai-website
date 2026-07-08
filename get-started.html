@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — Vaughan</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  min-height: 100dvh;
+  padding: 0 0 80px;
+}
+
+/* NAV */
+nav {
+  height: 60px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 64px;
+}
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo svg {
+  height: 0.72em;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  margin-right: -0.04em;
+}
+.nav-logo span { font-family: 'Sora', sans-serif; font-weight: 400; }
+
+/* LAYOUT */
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+.intro {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* FORM */
+.field {
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 0.97rem;
+  font-family: 'Space Grotesk', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+input:focus, textarea:focus {
+  border-color: rgba(179,255,0,0.5);
+}
+textarea { min-height: 120px; }
+textarea.tall { min-height: 160px; }
+
+.hint {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.5;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin: 32px 0;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background: #b3ff00;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  margin-top: 8px;
+}
+button[type="submit"]:hover {
+  background: #96d900;
+  transform: translateY(-1px);
+}
+button[type="submit"]:disabled {
+  background: rgba(179,255,0,0.35);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* THANK YOU */
+.thank-you {
+  display: none;
+  text-align: center;
+  padding: 60px 0;
+}
+.thank-you.show { display: block; }
+.thank-you-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+.thank-you h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+}
+.thank-you p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg viewBox="0 0 88 76" fill="none">
+      <line x1="44" y1="72" x2="10" y2="8" stroke="#AAFF00" stroke-width="16" stroke-linecap="round"/>
+      <line x1="44" y1="72" x2="78" y2="8" stroke="#AAFF00" stroke-width="16" stroke-linecap="round"/>
+    </svg><span>aughan</span>
+  </a>
+</nav>
+
+<div class="wrap">
+
+  <div id="form-view">
+    <h1>Get Started</h1>
+    <p class="intro">Let's configure Vaughan for your agency.<br>Complete the form below and I'll review your details personally. I'll then confirm everything before we begin setup.</p>
+
+    <form id="gs-form" action="https://formspree.io/f/marc@vaughanai.co" method="POST">
+
+      <div class="field">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Your name"/>
+      </div>
+
+      <div class="field">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="you@youragency.co.uk"/>
+      </div>
+
+      <div class="field">
+        <label for="agency">Agency name *</label>
+        <input type="text" id="agency" name="agency" required placeholder="e.g. Hilton Estate Agents"/>
+      </div>
+
+      <div class="field">
+        <label for="website">Website *</label>
+        <input type="url" id="website" name="website" required placeholder="https://"/>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="07700 000000"/>
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="field">
+        <label for="challenge">What's your biggest challenge with website enquiries?</label>
+        <textarea id="challenge" name="challenge" class="tall" placeholder="Tell me what's not working right now..."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="voice">How would you describe your brand voice?</label>
+        <input type="text" id="voice" name="voice" placeholder="e.g. Professional, Friendly, Luxury..."/>
+        <p class="hint">Professional · Friendly · Luxury · Straight-talking · Family-run</p>
+      </div>
+
+      <div class="field">
+        <label for="other">Anything else Vaughan should know about your agency?</label>
+        <textarea id="other" name="other" placeholder="Anything that would help us get this right for you..."></textarea>
+      </div>
+
+      <button type="submit" id="submit-btn">Send my details →</button>
+
+    </form>
+  </div>
+
+  <div class="thank-you" id="thank-you">
+    <div class="thank-you-icon">✓</div>
+    <h2>Details received.</h2>
+    <p>Thanks — Marc will review your details personally and be in touch within one working day (usually much sooner).</p>
+  </div>
+
+</div>
+
+<script>
+  var form = document.getElementById('gs-form');
+  var btn  = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (res.ok) {
+        document.getElementById('form-view').style.display = 'none';
+        document.getElementById('thank-you').classList.add('show');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send my details →';
+        alert('Something went wrong. Please email marc@vaughanai.co directly.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send my details →';
+      alert('Something went wrong. Please email marc@vaughanai.co directly.');
+    });
+  });
+</script>
+
+</body>
+</html>
