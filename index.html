@@ -584,16 +584,6 @@ footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
 footer a:hover { color: rgba(255,255,255,0.6); }
 
 /* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transition: opacity 0.9s ease;
-}
-.reveal.in-view {
-  opacity: 1;
-}
-.reveal-d1 { transition-delay: 0.15s; }
-.reveal-d2 { transition-delay: 0.3s; }
-.reveal-d3 { transition-delay: 0.45s; }
 
 /* ── MOBILE ── */
 @media (max-width: 640px) {
@@ -897,22 +887,6 @@ footer a:hover { color: rgba(255,255,255,0.6); }
     });
   })();
 
-  // Scroll reveal — targets individual content elements, not sections
-  (function() {
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('[data-reveal]').forEach(function(el) {
-      el.classList.add('reveal');
-      io.observe(el);
-    });
-  })();
 </script>
 
 </body>
