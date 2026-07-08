@@ -585,6 +585,12 @@ footer a:hover { color: rgba(255,255,255,0.6); }
 
 /* ── SCROLL REVEAL ── */
 
+/* ── REVEAL ── */
+.reveal { opacity: 0; transition: opacity 1s ease; }
+.reveal.in-view { opacity: 1; }
+.reveal-d1 { transition-delay: 0.15s; }
+.reveal-d2 { transition-delay: 0.3s; }
+
 /* ── MOBILE ── */
 @media (max-width: 640px) {
   nav { padding: 0 20px; }
@@ -884,6 +890,22 @@ footer a:hover { color: rgba(255,255,255,0.6); }
         menu.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
       }
+    });
+  })();
+
+  // Scroll reveal
+  (function() {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function(el) {
+      el.classList.add('reveal');
+      io.observe(el);
     });
   })();
 
