@@ -157,7 +157,7 @@ button[type="submit"]:disabled { background: rgba(179,255,0,0.3); cursor: not-al
     <h1>Get Started</h1>
     <p class="intro">Just the basics. I'll review your details personally and we'll take it from there.</p>
 
-    <form id="gs-form" action="https://formspree.io/f/xwvddndl" method="POST" enctype="multipart/form-data">
+    <form id="gs-form" action="https://formspree.io/f/xwvddndl" method="POST">
 
       <div class="field">
         <label for="name">Your name *</label>
@@ -179,15 +179,6 @@ button[type="submit"]:disabled { background: rgba(179,255,0,0.3); cursor: not-al
         <input type="url" id="website" name="website" required placeholder="https://"/>
       </div>
 
-      <div class="field" style="margin-top:32px;">
-        <label>Got something to share? <span style="font-weight:500;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.2);">— completely optional</span></label>
-        <div class="drop-zone" id="drop-zone">
-          <input type="file" name="attachment" id="file-input" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.svg"/>
-          <p class="drop-text">Drop your logo, a brand guide or anything useful here<br><strong>PDF, Word, or image — totally up to you</strong></p>
-          <p class="drop-filename" id="filename"></p>
-        </div>
-      </div>
-
       <button type="submit" id="submit-btn">Send my details →</button>
       <p class="note">No payment needed yet. Marc will be in touch within one working day.</p>
 
@@ -202,24 +193,6 @@ button[type="submit"]:disabled { background: rgba(179,255,0,0.3); cursor: not-al
 </div>
 
 <script>
-  var dropZone  = document.getElementById('drop-zone');
-  var fileInput = document.getElementById('file-input');
-  var filename  = document.getElementById('filename');
-
-  fileInput.addEventListener('change', function() {
-    if (this.files[0]) { filename.textContent = this.files[0].name; filename.style.display = 'block'; }
-  });
-  dropZone.addEventListener('dragover',  function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-  dropZone.addEventListener('dragleave', function()  { this.classList.remove('drag-over'); });
-  dropZone.addEventListener('drop', function(e) {
-    e.preventDefault(); this.classList.remove('drag-over');
-    if (e.dataTransfer.files[0]) {
-      fileInput.files = e.dataTransfer.files;
-      filename.textContent = e.dataTransfer.files[0].name;
-      filename.style.display = 'block';
-    }
-  });
-
   var form = document.getElementById('gs-form');
   var btn  = document.getElementById('submit-btn');
 
