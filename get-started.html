@@ -19,7 +19,6 @@ body {
   padding: 0 0 80px;
 }
 
-/* NAV */
 nav {
   height: 60px;
   padding: 0 40px;
@@ -39,84 +38,76 @@ nav {
   text-decoration: none;
   line-height: 1;
 }
-.nav-logo svg {
-  height: 0.72em;
-  width: auto;
-  display: block;
-  flex-shrink: 0;
-  margin-right: -0.04em;
-}
+.nav-logo svg { height: 0.72em; width: auto; display: block; flex-shrink: 0; margin-right: -0.04em; }
 .nav-logo span { font-family: 'Sora', sans-serif; font-weight: 400; }
 
-/* LAYOUT */
-.wrap {
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+.wrap { max-width: 500px; margin: 0 auto; padding: 0 24px; }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.08;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .intro {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-  margin-bottom: 48px;
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  margin-bottom: 40px;
 }
 
-/* FORM */
-.field {
-  margin-bottom: 20px;
-}
+.field { margin-bottom: 16px; }
 label {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 8px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 7px;
 }
 input[type="text"],
 input[type="email"],
-input[type="tel"],
-input[type="url"],
-textarea {
+input[type="url"] {
   width: 100%;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
-  padding: 14px 16px;
+  padding: 15px 16px;
   color: #ffffff;
-  font-size: 0.97rem;
+  font-size: 1rem;
   font-family: 'Space Grotesk', sans-serif;
   outline: none;
   transition: border-color 0.15s;
-  resize: vertical;
 }
-input:focus, textarea:focus {
-  border-color: rgba(179,255,0,0.5);
-}
-textarea { min-height: 120px; }
-textarea.tall { min-height: 160px; }
+input:focus { border-color: rgba(179,255,0,0.45); }
 
-.hint {
-  margin-top: 8px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
-  line-height: 1.5;
+/* Optional drop zone */
+.drop-zone {
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
 }
-
-.divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  margin: 32px 0;
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: rgba(179,255,0,0.35);
+  background: rgba(179,255,0,0.02);
 }
+.drop-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+.drop-text { font-size: 0.85rem; color: rgba(255,255,255,0.3); line-height: 1.6; }
+.drop-text strong { color: rgba(255,255,255,0.55); font-weight: 600; }
+.drop-filename { margin-top: 8px; font-size: 0.82rem; color: #b3ff00; display: none; }
 
 button[type="submit"] {
   width: 100%;
@@ -131,40 +122,23 @@ button[type="submit"] {
   letter-spacing: -0.01em;
   cursor: pointer;
   transition: background 0.15s, transform 0.15s;
-  margin-top: 8px;
+  margin-top: 28px;
 }
-button[type="submit"]:hover {
-  background: #96d900;
-  transform: translateY(-1px);
-}
-button[type="submit"]:disabled {
-  background: rgba(179,255,0,0.35);
-  cursor: not-allowed;
-  transform: none;
+button[type="submit"]:hover { background: #96d900; transform: translateY(-1px); }
+button[type="submit"]:disabled { background: rgba(179,255,0,0.3); cursor: not-allowed; transform: none; }
+
+.note {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  line-height: 1.5;
 }
 
-/* THANK YOU */
-.thank-you {
-  display: none;
-  text-align: center;
-  padding: 60px 0;
-}
+.thank-you { display: none; text-align: center; padding: 80px 0; }
 .thank-you.show { display: block; }
-.thank-you-icon {
-  font-size: 48px;
-  margin-bottom: 24px;
-}
-.thank-you h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 16px;
-}
-.thank-you p {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-}
+.thank-you h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px; }
+.thank-you p { font-size: 1rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -179,16 +153,15 @@ button[type="submit"]:disabled {
 </nav>
 
 <div class="wrap">
-
   <div id="form-view">
     <h1>Get Started</h1>
-    <p class="intro">Let's configure Vaughan for your agency.<br>Complete the form below and I'll review your details personally. I'll then confirm everything before we begin setup.</p>
+    <p class="intro">Just the basics. I'll review your details personally and we'll take it from there.</p>
 
-    <form id="gs-form" action="https://formspree.io/f/xwvddndl" method="POST">
+    <form id="gs-form" action="https://formspree.io/f/xwvddndl" method="POST" enctype="multipart/form-data">
 
       <div class="field">
-        <label for="name">Name *</label>
-        <input type="text" id="name" name="name" required placeholder="Your name"/>
+        <label for="name">Your name *</label>
+        <input type="text" id="name" name="name" required placeholder="e.g. Sarah Johnson"/>
       </div>
 
       <div class="field">
@@ -206,43 +179,47 @@ button[type="submit"]:disabled {
         <input type="url" id="website" name="website" required placeholder="https://"/>
       </div>
 
-      <div class="field">
-        <label for="phone">Phone number <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
-        <input type="tel" id="phone" name="phone" placeholder="07700 000000"/>
-      </div>
-
-      <hr class="divider"/>
-
-      <div class="field">
-        <label for="challenge">What's your biggest challenge with website enquiries?</label>
-        <textarea id="challenge" name="challenge" class="tall" placeholder="Tell me what's not working right now..."></textarea>
-      </div>
-
-      <div class="field">
-        <label for="voice">How would you describe your brand voice?</label>
-        <input type="text" id="voice" name="voice" placeholder="e.g. Professional, Friendly, Luxury..."/>
-        <p class="hint">Professional · Friendly · Luxury · Straight-talking · Family-run</p>
-      </div>
-
-      <div class="field">
-        <label for="other">Anything else Vaughan should know about your agency?</label>
-        <textarea id="other" name="other" placeholder="Anything that would help us get this right for you..."></textarea>
+      <div class="field" style="margin-top:32px;">
+        <label>Got something to share? <span style="font-weight:500;text-transform:none;letter-spacing:0;color:rgba(255,255,255,0.2);">— completely optional</span></label>
+        <div class="drop-zone" id="drop-zone">
+          <input type="file" name="attachment" id="file-input" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.svg"/>
+          <p class="drop-text">Drop your logo, a brand guide or anything useful here<br><strong>PDF, Word, or image — totally up to you</strong></p>
+          <p class="drop-filename" id="filename"></p>
+        </div>
       </div>
 
       <button type="submit" id="submit-btn">Send my details →</button>
+      <p class="note">No payment needed yet. Marc will be in touch within one working day.</p>
 
     </form>
   </div>
 
   <div class="thank-you" id="thank-you">
-    <div class="thank-you-icon">✓</div>
+    <div style="font-size:48px;margin-bottom:24px;">✓</div>
     <h2>Details received.</h2>
-    <p>Thanks — Marc will review your details personally and be in touch within one working day (usually much sooner).</p>
+    <p>Marc will review your submission personally and be in touch within one working day — usually much sooner.</p>
   </div>
-
 </div>
 
 <script>
+  var dropZone  = document.getElementById('drop-zone');
+  var fileInput = document.getElementById('file-input');
+  var filename  = document.getElementById('filename');
+
+  fileInput.addEventListener('change', function() {
+    if (this.files[0]) { filename.textContent = this.files[0].name; filename.style.display = 'block'; }
+  });
+  dropZone.addEventListener('dragover',  function(e) { e.preventDefault(); this.classList.add('drag-over'); });
+  dropZone.addEventListener('dragleave', function()  { this.classList.remove('drag-over'); });
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault(); this.classList.remove('drag-over');
+    if (e.dataTransfer.files[0]) {
+      fileInput.files = e.dataTransfer.files;
+      filename.textContent = e.dataTransfer.files[0].name;
+      filename.style.display = 'block';
+    }
+  });
+
   var form = document.getElementById('gs-form');
   var btn  = document.getElementById('submit-btn');
 
@@ -250,7 +227,6 @@ button[type="submit"]:disabled {
     e.preventDefault();
     btn.disabled = true;
     btn.textContent = 'Sending…';
-
     fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
